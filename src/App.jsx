@@ -1,6 +1,10 @@
-// import {useState} from 'react'
+// import {useState,useEffect} from 'react'
 // function App(){
 //   const[count,setCount]=useState(0)
+//   useEffect(()=>{
+//     document.title=`count:${count}`
+//     console.log("count updated")
+//   },[count])
 // return (
 //   <>
 //   <h1>Counter App</h1>
@@ -42,9 +46,12 @@
 // }
 // export default App
 
-// import {useState} from 'react'
+// import {useState,useEffect} from 'react'
 // function App(){
 //   const[bg,setBg]=useState("black")
+//   useEffect(()=>{
+//     console.log(`background color is:${bg}`)
+//   },[bg])
 //   return (
 //     <div style={{background:bg,height:400}}>
 //     <button onClick={()=>setBg("red")}>red</button>
@@ -66,9 +73,12 @@
 // }
 // export default App
 
-// import {useState} from 'react'
+// import {useState,useEffect} from 'react'
 // function App(){
 //   const[text,setText]=useState("")
+//   useEffect(()=>{
+//     console.log(text)
+//   },[text])
 //   return (
 //     <>
 //     <h1>text</h1>
@@ -282,5 +292,81 @@
 //   ))}
 //   </>
 // )
+// }
+// export default App
+
+// import {useEffect} from 'react'
+
+// function App(){
+//   useEffect(()=>{
+//     console.log("Component mounted")
+//   },[])
+// }
+// export default App
+
+// import {useEffect,useState} from 'react'
+
+// function App(){
+//   const[count,setCount]=useState(0)
+//   const[isRun,setIsRun]=useState(false)
+//   useEffect(()=>{
+//     if(isRun===true){
+//     const timer=setInterval(()=>{
+//       setCount(prev=>prev+1)
+//     },1000)
+//     return()=>{
+//       clearInterval(timer)
+//     }
+// }},[isRun])
+//   return (
+//     <>
+//     <h1>timer/count</h1>
+//     <h2>{count}</h2>
+//     <button onClick={()=>setIsRun(true)}>start</button>
+//     </>
+//   )
+// }
+// export default App
+
+// import {useState,useEffect} from 'react'
+// import axios from 'axios'
+
+// function App(){
+//   const[user,setUsers]=useState([])
+//   useEffect(()=>{
+//    axios.get("https://jsonplaceholder.typicode.com/users")
+//     .then(res=>{
+//       setUsers(res.data)
+//     })
+//   },[])
+  
+// return (
+//   <>
+//   <h1>Fetching data from json server</h1>
+//   {user.map((users)=>(
+//     <h4 key={users.id}>{users.name}</h4>
+//   ))}
+//   </>
+// )
+// }
+// export default App
+
+// import {useRef} from'react'
+// function App(){
+//   const inputRef=useRef()
+//   function focus(){
+//     inputRef.current.focus()
+//   }
+//   function clear(){
+//     inputRef.current.value=""
+//     inputRef.current.focus()
+
+//   }
+//   return (
+//     <>
+//     <input ref={inputRef}></input>
+//     <button onClick={clear}>clear</button>
+//     </>
+//   )
 // }
 // export default App
