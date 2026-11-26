@@ -370,3 +370,178 @@
 //   )
 // }
 // export default App
+// https://jsonplaceholder.typicode.com/posts
+
+// import {useState,useEffect} from 'react'
+// import axios from 'axios'
+// function App(){
+//     const[users,setUsers]=useState([])
+
+//     useEffect(()=>{
+//         axios.post('https://jsonplaceholder.typicode.com/posts')
+//         .then((res)=>{
+//             setUsers(res.data)
+//         })
+//     },[])
+    
+//     return (
+//         <>
+//         {users.map((user)=>(
+//             <div key={user.id}>
+//                 <h5>{user.title}</h5>
+//                 <p>{user.body}</p>
+//             </div>
+//         ))}
+//         </>
+//     )
+// }
+// export default App
+
+// https://jsonplaceholder.typicode.com/users
+
+// import {useState,useEffect} from 'react'
+// import axios from 'axios'
+// function App(){
+//     const[users,setUsers]=useState([])
+//     useEffect(()=>{
+//         axios.get('https://github.com/Ovi/DummyJSON.git')
+//         .then((res)=>{
+//             setUsers(res.data)
+//         })
+//     },[])
+//     return (
+//         <>
+//         <h1>users</h1>
+//         {/* {users.map((user)=>(
+//             <div key={user.id}>
+//                 <p>{user.name}</p>
+//                 <p>{user.email}</p>
+//             </div>
+//         ))} */}
+//         <h3>name:{users.name}</h3>
+//         <h3>name:{users.username}</h3>
+//         </>
+//     )
+// }
+// export default App
+
+import {useState} from 'react'
+function App(){
+    const[search,setSearch]=useState("")
+
+    const products = [
+  {
+    id: 1,
+    title: "iPhone 15",
+    price: 799,
+    category: "Smartphones",
+    brand: "Apple",
+    stock: 25,
+    image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400"
+  },
+  {
+    id: 2,
+    title: "Samsung Galaxy S24",
+    price: 899,
+    category: "Smartphones",
+    brand: "Samsung",
+    stock: 18,
+    image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400"
+  },
+  {
+    id: 3,
+    title: "MacBook Air M3",
+    price: 1099,
+    category: "Laptops",
+    brand: "Apple",
+    stock: 12,
+    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400"
+  },
+  {
+    id: 4,
+    title: "Dell XPS 15",
+    price: 1299,
+    category: "Laptops",
+    brand: "Dell",
+    stock: 8,
+    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400"
+  },
+  {
+    id: 5,
+    title: "Sony WH-1000XM5",
+    price: 349,
+    category: "Headphones",
+    brand: "Sony",
+    stock: 30,
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400"
+  },
+  {
+    id: 6,
+    title: "AirPods Pro 2",
+    price: 249,
+    category: "Earbuds",
+    brand: "Apple",
+    stock: 40,
+    image: "https://images.unsplash.com/photo-1603351154351-5e2d0600bb77?w=400"
+  },
+  {
+    id: 7,
+    title: "iPad Air",
+    price: 599,
+    category: "Tablets",
+    brand: "Apple",
+    stock: 15,
+    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400"
+  },
+  {
+    id: 8,
+    title: "Apple Watch Series 9",
+    price: 399,
+    category: "Smartwatches",
+    brand: "Apple",
+    stock: 20,
+    image: "https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400"
+  },
+  {
+    id: 9,
+    title: "Logitech MX Master 3S",
+    price: 99,
+    category: "Accessories",
+    brand: "Logitech",
+    stock: 50,
+    image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400"
+  },
+  {
+    id: 10,
+    title: "Canon EOS R50",
+    price: 679,
+    category: "Cameras",
+    brand: "Canon",
+    stock: 10,
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400"
+  }
+]
+
+ const filtered=products.filter((pro)=>
+    pro.title.toLowerCase().includes(search.toLowerCase())
+    )
+return (
+    <>
+    <div style={{display:'flex', justifyContent:'center', alignItems:'center', gap:'30px'}}>
+    <h1 style={{}}>products</h1>
+    <input type='text' placeholder='search products.....' style={{height:'30px' }} value={search} onChange={(e)=>setSearch(e.target.value)}></input>
+    </div>
+    <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr 1fr', Gap:'20px' }}>
+    {filtered.map((pro)=>(
+        <div key={pro.id} style={{border:'5px solid black', width:'300px', textAlign:'center' , padding:''}}>
+            <img src={pro.image} style={{width:'100px', height:'100px', border:'2px solid blue'}} />
+            <h6>{pro.title}</h6>
+            <h6>{pro.description}</h6>
+            <h6>{pro.price}</h6>
+        </div>
+    ))}
+    </div>
+    </>
+)
+}
+export default App
